@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -5,26 +6,52 @@ public class MainMenuButtons : MonoBehaviour
 {
     public GameObject loginPanel,SignUpPanel,TOSPanel,forgotPassPanel,loadingScreenPanel,BGDarken; 
 
+    public GameObject startText;
+    public bool clickToStart = true;
+
+    void Update()
+    {
+       
+    
+        if(Input.anyKeyDown && clickToStart)
+        {
+            
+            clickToStart = false;
+            BGDarken.SetActive(true);
+            startText.SetActive(false);
+            loginPanel.SetActive(true);
+        }
+    
+    }
+
     void Start()
     {
         SetPanelsNonActive();
     }
+
+    public void SendToClickToStart()
+    {
+        CloseModal();
+        BGDarken.SetActive(false);
+        StartCoroutine(ClickToStartDelay());
+    }
+
     public void SendToSignup()
     {
         CloseModal();
-        SignUpPanel.SetActive(true);
+        StartCoroutine(Delay(SignUpPanel));
     }
 
     public void SendToLogin()
     {
         CloseModal();
-        loginPanel.SetActive(true);
+        StartCoroutine(Delay(loginPanel));
     }
 
     public void SendToForgotPass()
     {
         CloseModal();
-        forgotPassPanel.SetActive(true);
+        StartCoroutine(Delay(forgotPassPanel));
     }
 
     public void SendToTOS()
@@ -36,7 +63,7 @@ public class MainMenuButtons : MonoBehaviour
     {
         CloseModal();
         BGDarken.SetActive(false);
-        loadingScreenPanel.SetActive(true);
+        StartCoroutine(Delay(loadingScreenPanel));
     }
 
     public void CloseModal()
@@ -47,12 +74,30 @@ public class MainMenuButtons : MonoBehaviour
 
     }
 
-    void SetPanelsNonActive()
+
+    // add a delay to the ability to click to start, this fixed bugs with all modals being removed and not allowing the user to do anything
+    IEnumerator ClickToStartDelay() 
+    {
+        yield return new WaitForSeconds(0.5f);
+        startText.SetActive(true);
+        yield return new WaitForSeconds(.6f);
+        clickToStart = true;
+    }
+
+    // wait for the modal to be removed before adding a new one
+    IEnumerator Delay(GameObject OBJ)
+    {
+        yield return new WaitForSeconds(.5f);
+        OBJ.SetActive(true);
+    }
+
+    void SetPanelsNonActive() // set all panels ,exept the main menu, to false
     {
         BGDarken.SetActive(false);
         TOSPanel.SetActive(false);
         forgotPassPanel.SetActive(false);
         loginPanel.SetActive(false);
         SignUpPanel.SetActive(false);
+        loadingScreenPanel.SetActive(false);
     }
 }
