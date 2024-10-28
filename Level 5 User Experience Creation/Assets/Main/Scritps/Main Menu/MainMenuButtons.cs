@@ -11,8 +11,6 @@ public class MainMenuButtons : MonoBehaviour
 
     void Update()
     {
-       
-    
         if(Input.anyKeyDown && clickToStart)
         {
             
@@ -61,6 +59,7 @@ public class MainMenuButtons : MonoBehaviour
 
     public void SendToLoading()
     {
+
         CloseModal();
         BGDarken.SetActive(false);
         StartCoroutine(Delay(loadingScreenPanel));
@@ -69,7 +68,7 @@ public class MainMenuButtons : MonoBehaviour
     public void CloseModal()
     {
         GameObject curPanel = EventSystem.current.currentSelectedGameObject.transform.parent.parent.gameObject;
-        Debug.Log(curPanel);
+        //Debug.Log(curPanel);
         curPanel.GetComponentInChildren<GrowAndShrinkText>().panelShrink();
 
     }
