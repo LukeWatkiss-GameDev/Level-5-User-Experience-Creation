@@ -5,9 +5,11 @@ using UnityEngine.EventSystems;
 public class MainMenuButtons : MonoBehaviour
 {
     public GameObject loginPanel,SignUpPanel,TOSPanel,forgotPassPanel,loadingScreenPanel,BGDarken; 
-
+    LoadingBarProgress loadingBarProgressScript;
     public GameObject startText;
     public bool clickToStart = true;
+
+
 
     void Update()
     {
@@ -24,6 +26,7 @@ public class MainMenuButtons : MonoBehaviour
 
     void Start()
     {
+        loadingBarProgressScript = GetComponent<LoadingBarProgress>();
         SetPanelsNonActive();
     }
 
@@ -63,6 +66,7 @@ public class MainMenuButtons : MonoBehaviour
         CloseModal();
         BGDarken.SetActive(false);
         StartCoroutine(Delay(loadingScreenPanel));
+        loadingBarProgressScript.StartLoading();
     }
 
     public void CloseModal()

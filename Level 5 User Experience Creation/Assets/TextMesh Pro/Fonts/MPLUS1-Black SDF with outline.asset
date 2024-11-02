@@ -11,7 +11,8 @@ Material:
   m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - UNDERLAY_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -70,7 +71,7 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0
+    - _OutlineWidth: 0.285
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.9
@@ -166,11 +167,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: MPLUS1-Black SDF
+  m_Name: MPLUS1-Black SDF with outline
   m_EditorClassIdentifier: 
-  hashCode: -547596739
+  hashCode: 1017736511
   material: {fileID: -8364938742850401941}
-  materialHashCode: 1812371197
+  materialHashCode: 873719487
   m_Version: 1.1.0
   m_SourceFontFileGUID: 811fbfa829315f24ab0723e9628dc54b
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 811fbfa829315f24ab0723e9628dc54b,
