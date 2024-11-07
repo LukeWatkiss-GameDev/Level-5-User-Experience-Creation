@@ -73,7 +73,7 @@ public class MainMenuButtons : MonoBehaviour
     {
         GameObject curPanel = EventSystem.current.currentSelectedGameObject.transform.parent.parent.gameObject;
         //Debug.Log(curPanel);
-        curPanel.GetComponentInChildren<GrowAndShrinkText>().panelShrink();
+        curPanel.GetComponentInChildren<GrowAndShrinkText>().PanelShrink();
 
     }
 

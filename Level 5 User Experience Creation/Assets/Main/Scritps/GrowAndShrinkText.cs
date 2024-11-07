@@ -22,7 +22,7 @@ public class GrowAndShrinkText : MonoBehaviour
 
         if(panel)
         {
-            panelGrow();
+            PanelGrow();
         }
     }
 
@@ -46,16 +46,16 @@ public class GrowAndShrinkText : MonoBehaviour
         OBJ.transform.DOScale(maxScaleSizeText,1).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
     }
 
-    void panelGrow() // scale a panel from (0,0,0) to (1,1,1)
+    void PanelGrow() // scale a panel from (0,0,0) to (1,1,1)
     {
         OBJ.transform.localScale = Vector3.zero;
         OBJ.transform.DOScale(new Vector3(1,1,1),1).SetEase(Ease.InOutSine);
     }
 
-    public void panelShrink() //scale a panel from (1,1,1) to (0,0,0)
+    public void PanelShrink() //scale a panel from (1,1,1) to (0,0,0)
     {
         
-        OBJ.transform.DOScale(0,1).SetEase(Ease.InOutSine).OnComplete(()=> OBJ.transform.gameObject.SetActive(false));
+        OBJ.transform.DOScale(0,1).SetEase(Ease.InOutSine).OnComplete(()=> OBJ.transform.parent.gameObject.SetActive(false));
     }
 
 

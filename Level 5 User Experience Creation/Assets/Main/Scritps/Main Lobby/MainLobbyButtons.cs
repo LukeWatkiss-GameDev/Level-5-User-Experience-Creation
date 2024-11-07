@@ -13,6 +13,7 @@ public class MainLobbyButtons : MonoBehaviour
     [Header("Modals")]
     public GameObject selectModeModal;
     public GameObject menuModal;
+    public bool modalIsOpen = false;
 
     bool canOpenModal = true;
     public GameObject currentScreen;
@@ -21,6 +22,20 @@ public class MainLobbyButtons : MonoBehaviour
     void Start()
     {
         SetPanelsNonActive();
+    }
+
+    void Update()
+    {
+        if(modalIsOpen & Input.GetMouseButtonDown(0))
+        {
+            // check if the user has clicked outside of the modal
+            GameObject curObject = EventSystem.current.currentSelectedGameObject;
+            Debug.Log(curObject);
+            if(curObject == backgroundDarken)
+            {
+                CloseMenuModal();
+            }
+        }
     }
 
     #region SwitchToX 
@@ -60,7 +75,12 @@ public class MainLobbyButtons : MonoBehaviour
 
     public void OpenMenuModal()
     {
-        SlidePanelIn(705);
+        SlidePanelIn(705,menuModal);
+    }
+
+    void CloseMenuModal()
+    {
+        SlidePanelout(1220,menuModal);
     }
 
 /*
@@ -108,20 +128,24 @@ public class MainLobbyButtons : MonoBehaviour
         // parent.parent will probably need to change
         GameObject curPanel = EventSystem.current.currentSelectedGameObject.transform.parent.parent.gameObject;
         //Debug.Log(curPanel);
-        curPanel.GetComponentInChildren<GrowAndShrinkText>().panelShrink(); // this will need to change 
+        curPanel.GetComponentInChildren<GrowAndShrinkText>().PanelShrink(); // this will need to change 
         backgroundDarken.SetActive(false);
         StartCoroutine(ModalDelay());
 
     }
 
-    void SlidePanelIn(float value)
+    void SlidePanelIn(float value, GameObject panel)
     {
-        menuModal.transform.DOLocalMoveX(value,1);
+        panel.transform.DOLocalMoveX(value,.25f);
+        backgroundDarken.SetActive(true);
+        modalIsOpen = true;
     }
 
-    void SlidePanelout(float value)
+    void SlidePanelout(float value,GameObject panel)
     {
-
+        panel.transform.DOLocalMoveX(value,.25f);
+        backgroundDarken.SetActive(false);
+        modalIsOpen = false;
     }
 
 
