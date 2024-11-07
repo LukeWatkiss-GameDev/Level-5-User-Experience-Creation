@@ -39,11 +39,20 @@ public class AccountCreation : MonoBehaviour
             
         }
 
+        foreach (var info in loginCheckerScript.loginInfo)
+        {
+            if(info.accountName == inputFields[3].text)
+            {
+                canCreateAccount = false;
+                Debug.Log("Account with this name already exists");
+            }
+        }
+
         // create the new account
         if(canCreateAccount)
         {
             // add the name and password to a list so it can be used to login
-            loginCheckerScript.loginInfo.Add(new LoginChecker.NameAndPassPair{ name = inputFields[3].text, password = inputFields[4].text});
+            loginCheckerScript.loginInfo.Add(new LoginChecker.NameAndPassPair{ name = inputFields[3].text, password = inputFields[4].text, accountName = inputFields[3].text});
 
             mainMenuButtonsScript.SendToLogin();
 

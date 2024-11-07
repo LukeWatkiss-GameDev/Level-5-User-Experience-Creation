@@ -55,7 +55,7 @@ public class GrowAndShrinkText : MonoBehaviour
     public void panelShrink() //scale a panel from (1,1,1) to (0,0,0)
     {
         
-        OBJ.transform.DOScale(0,1).SetEase(Ease.InOutSine).OnComplete(()=> OBJ.transform.parent.gameObject.SetActive(false));
+        OBJ.transform.DOScale(0,1).SetEase(Ease.InOutSine).OnComplete(()=> OBJ.transform.gameObject.SetActive(false));
     }
 
 

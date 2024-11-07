@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LoginChecker : MonoBehaviour
 {
+    AccountInfoHolder accountInfoHolder;
     MainMenuButtons mainMenuButtonsScript;
 
     [System.Serializable]
@@ -12,6 +13,7 @@ public class LoginChecker : MonoBehaviour
         // class to hold name and password pairs
         public string name;
         public string password;
+        public string accountName;
     }
     public List<NameAndPassPair> loginInfo = new List<NameAndPassPair>(); // list of name and password pairs
     
@@ -21,6 +23,7 @@ public class LoginChecker : MonoBehaviour
     void Start()
     {
         mainMenuButtonsScript = GetComponent<MainMenuButtons>();
+        accountInfoHolder = GameObject.Find("Account Info").GetComponent<AccountInfoHolder>();
     }
 
     
@@ -33,6 +36,9 @@ public class LoginChecker : MonoBehaviour
             {
                 Debug.Log("correct name and password");
                 mainMenuButtonsScript.SendToLoading();
+
+                // manage sending over player account name 
+                accountInfoHolder.accountName = info.accountName;
             }
             else
             {

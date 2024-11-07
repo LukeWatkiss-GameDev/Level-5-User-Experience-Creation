@@ -2,12 +2,19 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 using UnityEngine.UI;
+using System.Collections;
 
 public class MainLobbyButtons : MonoBehaviour
 {
 
     public GameObject playScreen,questsScreen,rhupassScreen,lockerScreen,shopScreen, careerScreen;
+    public GameObject backgroundDarken;
 
+    [Header("Modals")]
+    public GameObject selectModeModal;
+    public GameObject menuModal;
+
+    bool canOpenModal = true;
     public GameObject currentScreen;
     public Button currentUpButton;
 
@@ -51,15 +58,26 @@ public class MainLobbyButtons : MonoBehaviour
 
     #endregion
 
-/*   public void OpenFriendsModal()
+    public void OpenMenuModal()
     {
-        SlidePanelIn(value);
+        SlidePanelIn(705);
     }
 
-    public void OpenMenuModal()
+/*
+    public void OpenFriendsModal()
     {
         SlidePanelIn(value);
     } */
+
+    public void OpenSelectModeModal()
+    {
+        if(canOpenModal)
+        {
+            canOpenModal = false;
+            selectModeModal.SetActive(true);
+            backgroundDarken.SetActive(true);
+        }
+    }
 
 
     public void ButtonSelected(GameObject panel)
@@ -91,15 +109,17 @@ public class MainLobbyButtons : MonoBehaviour
         GameObject curPanel = EventSystem.current.currentSelectedGameObject.transform.parent.parent.gameObject;
         //Debug.Log(curPanel);
         curPanel.GetComponentInChildren<GrowAndShrinkText>().panelShrink(); // this will need to change 
+        backgroundDarken.SetActive(false);
+        StartCoroutine(ModalDelay());
 
     }
 
-    void SliderPanelIn(float value)
+    void SlidePanelIn(float value)
     {
-        
+        menuModal.transform.DOLocalMoveX(value,1);
     }
 
-    void SliderPanelout(float value)
+    void SlidePanelout(float value)
     {
 
     }
@@ -114,6 +134,12 @@ public class MainLobbyButtons : MonoBehaviour
     {
         OBJ.transform.DOLocalMoveY(-503.5f,0.5f);
     }
+
+    IEnumerator ModalDelay() 
+    {
+        yield return new WaitForSeconds(1.1f);
+        canOpenModal = true;
+    }
     void SetPanelsNonActive() // set all panels ,exept the main menu, to false
     {
         questsScreen.SetActive(false);
@@ -121,6 +147,8 @@ public class MainLobbyButtons : MonoBehaviour
         lockerScreen.SetActive(false);
         shopScreen.SetActive(false);
         careerScreen.SetActive(false);
+        backgroundDarken.SetActive(false);
+        selectModeModal.SetActive(false);
     }
 
 
