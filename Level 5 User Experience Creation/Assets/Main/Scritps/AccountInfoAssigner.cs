@@ -10,6 +10,7 @@ public class AccountInfoAssigner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         accountInfoHolder = GameObject.Find("Account Info").GetComponent<AccountInfoHolder>();
         currentAccountName = accountInfoHolder.accountName;
         SetAllStrings();

@@ -49,13 +49,13 @@ public class GrowAndShrinkText : MonoBehaviour
     void PanelGrow() // scale a panel from (0,0,0) to (1,1,1)
     {
         OBJ.transform.localScale = Vector3.zero;
-        OBJ.transform.DOScale(new Vector3(1,1,1),1).SetEase(Ease.InOutSine);
+        OBJ.transform.DOScale(new Vector3(1,1,1),.5f).SetEase(Ease.InOutSine);
     }
 
     public void PanelShrink() //scale a panel from (1,1,1) to (0,0,0)
     {
         
-        OBJ.transform.DOScale(0,1).SetEase(Ease.InOutSine).OnComplete(()=> OBJ.transform.parent.gameObject.SetActive(false));
+        OBJ.transform.DOScale(0,.5f).SetEase(Ease.InOutSine).OnComplete(()=> OBJ.transform.parent.gameObject.SetActive(false));
     }
 
 

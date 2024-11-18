@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 using DG.Tweening;
 using UnityEngine.UI;
 using System.Collections;
+using TMPro;
 
 public class MainLobbyButtons : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class MainLobbyButtons : MonoBehaviour
     bool canOpenModal = true;
     public GameObject currentScreen;
     public Button currentUpButton;
+
+    [Header("Report")]
+    public GameObject reportTooltip;
+    public TMP_InputField[] reportInputFields;
 
     void Start()
     {
@@ -73,6 +78,7 @@ public class MainLobbyButtons : MonoBehaviour
 
     #endregion
 
+    #region Menu Modal
     public void OpenMenuModal()
     {
         SlidePanelIn(705,menuModal);
@@ -83,12 +89,44 @@ public class MainLobbyButtons : MonoBehaviour
         SlidePanelout(1220,menuModal);
     }
 
+    public void SendToSupport()
+    {
+        // when the funtion is called send the user to the website bellow
+        Application.OpenURL("https://unity.com");
+    }
+
+    public void SendReport()
+    {
+        reportTooltip.SetActive(true);
+        foreach (var field in reportInputFields)
+        {
+            field.text = "";    
+        }
+        StartCoroutine(FadeToolTip(reportTooltip));        
+    }
+
+    IEnumerator FadeToolTip(GameObject tooltip)
+    {
+        // change this to make the tool tip fade after a set amount of time
+        yield return new WaitForSeconds(2);
+        tooltip.GetComponentInChildren<GrowAndShrinkText>().PanelShrink();
+    }
+
+    #endregion
+
+    #region Friends Modal
 /*
     public void OpenFriendsModal()
     {
         SlidePanelIn(value);
-    } */
+    } 
 
+    void CloseFriendsModal()
+    {
+        SlidePanelout(1220,menuModal);
+    }
+*/
+    #endregion
     public void OpenSelectModeModal()
     {
         if(canOpenModal)
@@ -117,10 +155,6 @@ public class MainLobbyButtons : MonoBehaviour
         currentScreen.SetActive(false);
         currentScreen = panel;
         currentScreen.SetActive(true);
-        
-        // will have to add changing panels somewhere in here
-        // also find out which panel 
-        // good luck 
 
     }
     public void CloseModal()
@@ -129,7 +163,7 @@ public class MainLobbyButtons : MonoBehaviour
         GameObject curPanel = EventSystem.current.currentSelectedGameObject.transform.parent.parent.gameObject;
         //Debug.Log(curPanel);
         curPanel.GetComponentInChildren<GrowAndShrinkText>().PanelShrink(); // this will need to change 
-        backgroundDarken.SetActive(false);
+        //backgroundDarken.SetActive(false);
         StartCoroutine(ModalDelay());
 
     }
@@ -161,7 +195,7 @@ public class MainLobbyButtons : MonoBehaviour
 
     IEnumerator ModalDelay() 
     {
-        yield return new WaitForSeconds(1.1f);
+        yield return new WaitForSeconds(.6f);
         canOpenModal = true;
     }
     void SetPanelsNonActive() // set all panels ,exept the main menu, to false
