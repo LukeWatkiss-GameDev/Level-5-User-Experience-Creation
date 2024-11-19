@@ -6,12 +6,6 @@ public class ClickToStart : MonoBehaviour
     public GameObject loginModal;
     public GameObject BGDarken;
 
-    void Start()
-    {
-        
-    }
-
-
     void Update()
     {
         if(Input.GetButtonDown("Fire1"))
