@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class FriendGenerator : MonoBehaviour
 {
-
+    FriendsPopup friendsPopupScript;
     List<int> friendsInUse = new List<int>();
 
     int friendsToGenerate;
@@ -18,10 +18,14 @@ public class FriendGenerator : MonoBehaviour
 
     public Sprite Online,AFK,Offline,inGame;
 
+    public float scrollAmount;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        friendsPopupScript = transform.parent.GetComponentInChildren<FriendsPopup>();
+
         friendScriptableList = Resources.Load<FriendScriptableList>("Friends");
         friendsToGenerate = Random.Range(8,friendScriptableList.listOfFriends.Length);
         
@@ -53,6 +57,7 @@ public class FriendGenerator : MonoBehaviour
         // assign status and name from the list of names 
         friend.transform.Find("Name").GetComponent<TMP_Text>().SetText(friendScriptableList.listOfFriends[index].playerName);
         friend.transform.Find("Status").GetComponent<TMP_Text>().SetText(status);
+        // change the sprite based on the status of the player
         if(status == "Online" || status == "In Lobby")
         {
             curSprite.sprite = Online;
@@ -69,7 +74,16 @@ public class FriendGenerator : MonoBehaviour
         {
             curSprite.sprite = Offline;
         }
+    }
 
-        
+    // buttons for scrolling through the list
+    public void ScrollDownList()
+    {
+        listParent.transform.position = new Vector3(listParent.transform.position.x,listParent.transform.position.y + scrollAmount,0);
+    }
+
+    public void ScrollUpList()
+    {
+        listParent.transform.position = new Vector3(listParent.transform.position.x,listParent.transform.position.y - scrollAmount,0);
     }
 }

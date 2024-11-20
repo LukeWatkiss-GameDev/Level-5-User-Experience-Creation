@@ -48,7 +48,7 @@ MonoBehaviour:
   - playerName: Gabe
     playerStatus: Playing Trios
   - playerName: JohnEledenRing
-    playerStatus: Playing Solos
+    playerStatus: Playing Solo
   - playerName: Santa
     playerStatus: Offline
   - playerName: Satan
@@ -63,3 +63,9 @@ MonoBehaviour:
     playerStatus: Offline
   - playerName: JohnRubarb
     playerStatus: Online
+  - playerName: PeteGameDev
+    playerStatus: Offline
+  - playerName: BJNewVegas
+    playerStatus: Playing Solo
+  - playerName: MikeOxlong
+    playerStatus: Playing Solo

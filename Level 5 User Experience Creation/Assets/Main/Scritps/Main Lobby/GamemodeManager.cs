@@ -18,6 +18,7 @@ public class GamemodeManager : MonoBehaviour
         Sprite spriteToChangeTo = EventSystem.current.currentSelectedGameObject.GetComponent<Image>().sprite;
         mainSelectModeImage.sprite = spriteToChangeTo;
         // close modal
+        mainLobbyButtonsScript.backgroundDarken.SetActive(false);
         mainLobbyButtonsScript.CloseModal();
     }
 
