@@ -15,7 +15,9 @@ public class MainLobbyButtons : MonoBehaviour
     public GameObject selectModeModal;
     public GameObject menuModal;
     public GameObject friendsModal;
+    public GameObject friendsPopup;
     public bool modalIsOpen = false;
+    public bool friendsModalIsOpen = false;
 
     bool canOpenModal = true;
     public GameObject currentScreen;
@@ -121,11 +123,14 @@ public class MainLobbyButtons : MonoBehaviour
     public void OpenFriendsModal()
     {
         SlidePanelIn(-705,friendsModal);
+        friendsModalIsOpen = true;
     } 
 
     public void CloseFriendsModal()
     {
         SlidePanelout(-1230,friendsModal);
+        friendsPopup.SetActive(false);
+        friendsModalIsOpen = false;
     }
 
     #endregion
