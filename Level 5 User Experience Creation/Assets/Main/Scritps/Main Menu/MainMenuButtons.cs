@@ -9,8 +9,6 @@ public class MainMenuButtons : MonoBehaviour
     public GameObject startText;
     public bool clickToStart = true;
 
-
-
     void Update()
     {
         if(Input.anyKeyDown && clickToStart)

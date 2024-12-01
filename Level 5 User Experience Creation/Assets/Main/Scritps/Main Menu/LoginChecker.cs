@@ -26,7 +26,6 @@ public class LoginChecker : MonoBehaviour
         accountInfoHolder = GameObject.Find("Account Info").GetComponent<AccountInfoHolder>();
     }
 
-    
     public void CheckNameAndPass()
     {
         // check if the entered name and password is in the usable names and passwords 
@@ -44,9 +43,6 @@ public class LoginChecker : MonoBehaviour
             {
                 Debug.Log("Wrong name and/or password");
             }
-
         }
-           
-        
     }
 }

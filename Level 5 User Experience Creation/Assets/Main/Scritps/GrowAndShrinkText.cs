@@ -1,7 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
 
-
 public class GrowAndShrinkText : MonoBehaviour
 {
     GameObject OBJ;
@@ -16,16 +15,14 @@ public class GrowAndShrinkText : MonoBehaviour
         
         if(text)
         {
-            
             TextGrow();
         }
-
         if(panel)
         {
             PanelGrow();
         }
     }
-
+    
     void OnDisable()
     {
         if(text)
@@ -33,7 +30,7 @@ public class GrowAndShrinkText : MonoBehaviour
             DOTween.Kill(transform); // Stops all dotween animations on this transfrom/Gameobject
         }
     }
-
+    #region Text
     void TextGrow() //grow text from scale (0,0,0) to (1,1,1)
     {
         OBJ.transform.localScale = Vector3.zero;
@@ -45,7 +42,9 @@ public class GrowAndShrinkText : MonoBehaviour
         OBJ.transform.localScale = new Vector3(1,1,1);
         OBJ.transform.DOScale(maxScaleSizeText,1).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
     }
+    #endregion
 
+    #region Panel
     void PanelGrow() // scale a panel from (0,0,0) to (1,1,1)
     {
         OBJ.transform.localScale = Vector3.zero;
@@ -57,6 +56,5 @@ public class GrowAndShrinkText : MonoBehaviour
         
         OBJ.transform.DOScale(0,.5f).SetEase(Ease.InOutSine).OnComplete(()=> OBJ.transform.parent.gameObject.SetActive(false));
     }
-
-
+    #endregion
 }
