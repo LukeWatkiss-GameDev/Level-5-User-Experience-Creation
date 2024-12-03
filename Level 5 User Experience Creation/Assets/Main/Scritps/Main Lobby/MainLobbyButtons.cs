@@ -101,12 +101,25 @@ public class MainLobbyButtons : MonoBehaviour
 
     public void SendReport()
     {
-        reportTooltip.SetActive(true);
-        foreach (var field in reportInputFields)
+        if(!reportTooltip.activeInHierarchy)
         {
-            field.text = "";    
+            // if the text fields are empty dont activate the report tool tip;
+            foreach (var field in reportInputFields)
+            {
+                if(field.text == "")
+                {
+                    return;
+                }
+            }
+
+            // activate the report tool tip and clear all of the text fields
+            reportTooltip.SetActive(true);
+            foreach (var field in reportInputFields)
+            {
+                field.text = "";    
+            }
+            StartCoroutine(FadeToolTip(reportTooltip));        
         }
-        StartCoroutine(FadeToolTip(reportTooltip));        
     }
 
     IEnumerator FadeToolTip(GameObject tooltip)
@@ -170,7 +183,7 @@ public class MainLobbyButtons : MonoBehaviour
         GameObject curPanel = EventSystem.current.currentSelectedGameObject.transform.parent.parent.gameObject;
         //Debug.Log(curPanel);
         curPanel.GetComponentInChildren<GrowAndShrinkText>().PanelShrink(); // this will need to change 
-        //backgroundDarken.SetActive(false);
+        backgroundDarken.SetActive(false);
         StartCoroutine(ModalDelay());
 
     }
