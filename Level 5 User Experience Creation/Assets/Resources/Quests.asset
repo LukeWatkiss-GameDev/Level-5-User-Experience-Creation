@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff16eec21f6bf54a8cac15d6b20ff53, type: 3}
+  m_Name: Quests
+  m_EditorClassIdentifier: 
+  listOfQuests:
+  - icon: {fileID: 21300000, guid: f1a53c9cd7cadee4280b6f5214588fcb, type: 3}
+    title: Discuss the takeover.
+    description: Talk to Jumping Jeff
+    completionStatus: 0/1
+  - icon: {fileID: 21300000, guid: 55d92dc7eb646ed459aa228d46ce3cb1, type: 3}
+    title: Should've gone for the head!
+    description: Kill enemies with headshots
+    completionStatus: 0/10
+  - icon: {fileID: 21300000, guid: c7ccd4a3fce3def4ba9ad2342cb7f219, type: 3}
+    title: All around the world.
+    description: Visist three named locations in one match
+    completionStatus: 0/3
+  - icon: {fileID: 21300000, guid: c7ccd4a3fce3def4ba9ad2342cb7f219, type: 3}
+    title: Too and Fro!
+    description: Visit Dishty Depot and Plane Crazy in a single match
+    completionStatus: 0/2
+  - icon: {fileID: 21300000, guid: 55d92dc7eb646ed459aa228d46ce3cb1, type: 3}
+    title: Splats all folks!
+    description: Kill enemies with the Splatter Gun
+    completionStatus: 0/5
+  - icon: {fileID: 21300000, guid: f1a53c9cd7cadee4280b6f5214588fcb, type: 3}
+    title: Eye of the storm.
+    description: Talk to One Eyed Pete
+    completionStatus: 0/1
+  - icon: {fileID: 21300000, guid: 55d92dc7eb646ed459aa228d46ce3cb1, type: 3}
+    title: Kill krazy
+    description: Kill 10 enemies at Kill Korner
+    completionStatus: 0/10
+  - icon: {fileID: 21300000, guid: c7ccd4a3fce3def4ba9ad2342cb7f219, type: 3}
+    title: Gone fishing
+    description: 'Visit Dunkin Docks '
+    completionStatus: 0/1
+  - icon: {fileID: 21300000, guid: 55d92dc7eb646ed459aa228d46ce3cb1, type: 3}
+    title: Sea-Day
+    description: kill 5 enemies at Battle Beach
+    completionStatus: 0/5
+  - icon: {fileID: 0}
+    title: 
+    description: 
+    completionStatus: 
