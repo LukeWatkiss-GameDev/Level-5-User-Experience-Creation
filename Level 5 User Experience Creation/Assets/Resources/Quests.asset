@@ -49,7 +49,3 @@ MonoBehaviour:
     title: Sea-Day
     description: kill 5 enemies at Battle Beach
     completionStatus: 0/5
-  - icon: {fileID: 0}
-    title: 
-    description: 
-    completionStatus: 
