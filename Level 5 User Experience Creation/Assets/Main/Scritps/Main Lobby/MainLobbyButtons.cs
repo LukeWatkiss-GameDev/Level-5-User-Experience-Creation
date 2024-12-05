@@ -27,6 +27,9 @@ public class MainLobbyButtons : MonoBehaviour
     public GameObject reportTooltip;
     public TMP_InputField[] reportInputFields;
 
+    [Header("Cameras")]
+    public Camera lockerCamera;
+
     void Start()
     {
         SetPanelsNonActive();
@@ -170,6 +173,17 @@ public class MainLobbyButtons : MonoBehaviour
         currentUpButton = curButton;
         currentUpButton.interactable = false;
         MoveButtonUp(currentUpButton);
+
+        // if the panel to change to is the locker activate the locker camera for the render texture
+        if(panel.name == "Locker")
+        {
+            lockerCamera.gameObject.SetActive(true);
+        }
+        else
+        {
+            lockerCamera.gameObject.SetActive(false);
+        }
+
 
         // disable the current active screen and then enable the new screen
         currentScreen.SetActive(false);
