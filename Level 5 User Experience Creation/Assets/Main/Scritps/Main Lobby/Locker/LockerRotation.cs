@@ -11,7 +11,7 @@ public class LockerRotation : MonoBehaviour
     void Start()
     {
         playerStartRotation = player.transform.eulerAngles;
-
+ 
     }
     void Update()
     {

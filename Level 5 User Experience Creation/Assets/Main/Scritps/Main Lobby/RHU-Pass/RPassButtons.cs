@@ -14,7 +14,7 @@ public class RPassButtons : MonoBehaviour
         GrowOBJ(currentSelectedOBJ);
     }
 
-    public void SelectButton()
+    public void SelectButton(Sprite icon)
     {
         // shrink the current selected game object and then grown the object that has just been clicked
         ShrinkOBJ(currentSelectedOBJ);
