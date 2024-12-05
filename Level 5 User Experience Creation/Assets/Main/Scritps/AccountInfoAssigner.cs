@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 
+//pete is best programmer, shane is here too
 public class AccountInfoAssigner : MonoBehaviour
 {
     AccountInfoHolder accountInfoHolder;

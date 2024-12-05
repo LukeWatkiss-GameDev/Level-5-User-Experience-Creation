@@ -4,7 +4,6 @@ using UnityEngine.EventSystems;
 public class MapZoom : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
 {
     Vector3 mapStartPos;
-    Vector3 mapZoomPosition;
     public float zoomAmount;
     public float minZoom;
     public float maxZoom;
@@ -20,7 +19,7 @@ public class MapZoom : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
         mapStartPos = transform.localPosition;
         curMapPos = mapStartPos;
 
-        mapZoomPosition = transform.position;
+
     }
     // Update is called once per frame
     void Update()
@@ -41,7 +40,7 @@ public class MapZoom : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
                 curMapScale = transform.localScale;
                 curMapPos = transform.localPosition;
                 // when zooming out lerp the map back to its original position
-                curMapPos = Vector3.Lerp(curMapPos,mapStartPos,.05f);         
+                curMapPos = Vector3.Lerp(curMapPos,mapStartPos,.05f);   
                 curMapScale = new Vector3(curMapScale.x -= zoomAmount + 0.05f, curMapScale.y -= zoomAmount + 0.05f, 0);
             }
             // scroll in 
@@ -57,13 +56,13 @@ public class MapZoom : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
             // clamp the zoom by the min and max values
             Vector3 clampedScale = new Vector3(Mathf.Clamp(curMapScale.x,minZoom,maxZoom),
                                                 Mathf.Clamp(curMapScale.y,minZoom,maxZoom),
-                                                0);
+                                                Mathf.Clamp(curMapScale.y,minZoom,maxZoom));
                                                 
             // clamp the position of the map so it dosent go to far off of the mask and disapear
             // min and max values have been diced through trial and error while zooming the map 
             Vector3 clampedMapPos = new Vector3(Mathf.Clamp(curMapPos.x,-600,600),
                                                 Mathf.Clamp(curMapPos.y,-600,600),
-                                                0); 
+                                                Mathf.Clamp(curMapPos.z,-600,600)); 
             // apply the clamped values
             // check if the map is at its max zoom, this stops the map moving around when it is fully zoomed in
             // only need to check one scale axis as they are all uniform
