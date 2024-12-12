@@ -1,23 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class RPassButtons : MonoBehaviour
 {
-    public GameObject currentSelectedOBJ;
-    public GameObject currenSelectedSprite;
+    public GameObject currentSelectedButton;
+   
     void Start()
     {
         // grow the first game object
-        GrowOBJ(currentSelectedOBJ);
+        GrowOBJ(currentSelectedButton);
     }
 
-    public void SelectButton(Sprite icon)
+    public void SelectButton(GameObject obj)
     {
         // shrink the current selected game object and then grown the object that has just been clicked
-        ShrinkOBJ(currentSelectedOBJ);
+        ShrinkOBJ(currentSelectedButton);
         GameObject nextSelectedOBJ = EventSystem.current.currentSelectedGameObject;
         GrowOBJ(nextSelectedOBJ);
 
@@ -27,7 +25,7 @@ public class RPassButtons : MonoBehaviour
     {
         // grow the selected game object and then set it to the current selected game object
         obj.transform.DOScale(1.1f,.5f);
-        currentSelectedOBJ = obj; 
+        currentSelectedButton = obj; 
     }
 
     void ShrinkOBJ(GameObject obj)
