@@ -1,18 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class RPScriptableObject : MonoBehaviour
+[CreateAssetMenu(fileName = "RHUpass", menuName = "ScriptableObjects/RHUpassItems")]
+public class RPScriptableObject : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public RHUpassItem[] listOfPassItems; // array to hold all the created scriptable objects
+}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+public enum ItemType
+{
+    // list of item types
+    Mouth,
+    FullSkin,
+    Head,
+    Hand,
+    eye,
+    Misc
+}
+
+[System.Serializable]
+public class RHUpassItem
+{
+    // contents of the scriptable object
+    public string itemName;
+    public ItemType itemType;
+    public Sprite itemSprite;
+    public float spriteScale;
 }

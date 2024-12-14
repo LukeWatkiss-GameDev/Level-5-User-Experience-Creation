@@ -29,6 +29,7 @@ public class MainLobbyButtons : MonoBehaviour
 
     [Header("Cameras")]
     public Camera lockerCamera;
+    public Camera rPassCamera;
 
     void Start()
     {
@@ -183,6 +184,15 @@ public class MainLobbyButtons : MonoBehaviour
         {
             lockerCamera.gameObject.SetActive(false);
         }
+        // if the panel to change to is the rhu pass activate the rhu pass camera for render texture
+        if(panel.name == "rhu-pass")
+        {
+            rPassCamera.gameObject.SetActive(true);
+        }
+        else
+        {
+            rPassCamera.gameObject.SetActive(false);
+        }
 
 
         // disable the current active screen and then enable the new screen
@@ -191,16 +201,19 @@ public class MainLobbyButtons : MonoBehaviour
         currentScreen.SetActive(true);
 
     }
-    public void CloseModal()
+    public void CloseModal(bool BGDarken)
     {
         // parent.parent will probably need to change
         GameObject curPanel = EventSystem.current.currentSelectedGameObject.transform.parent.parent.gameObject;
-        //Debug.Log(curPanel);
         curPanel.GetComponentInChildren<GrowAndShrinkText>().PanelShrink(); // this will need to change 
-        backgroundDarken.SetActive(false);
+        if(BGDarken)
+        {
+            backgroundDarken.SetActive(false);
+        }
         StartCoroutine(ModalDelay());
 
     }
+
 
     void SlidePanelIn(float value, GameObject panel)
     {

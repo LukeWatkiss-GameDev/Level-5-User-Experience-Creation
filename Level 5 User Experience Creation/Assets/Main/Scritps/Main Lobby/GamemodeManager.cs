@@ -19,7 +19,7 @@ public class GamemodeManager : MonoBehaviour
         mainSelectModeImage.sprite = spriteToChangeTo;
         // close modal
         mainLobbyButtonsScript.backgroundDarken.SetActive(false);
-        mainLobbyButtonsScript.CloseModal();
+        mainLobbyButtonsScript.CloseModal(true);
     }
 
 }

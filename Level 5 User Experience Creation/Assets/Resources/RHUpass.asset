@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f030cc73b48b21244b7d7f42878771d7, type: 3}
+  m_Name: RHUpass
+  m_EditorClassIdentifier: 
+  listOfPassItems:
+  - itemName: Robot Mouth
+    itemType: 0
+    itemSprite: {fileID: 21300000, guid: 2a1f5613155808c43a4d53c6cebbe3ed, type: 3}
+    spriteScale: 0.65
+  - itemName: Antlers
+    itemType: 2
+    itemSprite: {fileID: 21300000, guid: 549507fdb4c8e2e40b1488777351e9d9, type: 3}
+    spriteScale: 0.6
+  - itemName: Boxing Gloves
+    itemType: 3
+    itemSprite: {fileID: 21300000, guid: 433b2485e8176e14bb06b6395bc9b3cc, type: 3}
+    spriteScale: 0.3
+  - itemName: Glasses
+    itemType: 4
+    itemSprite: {fileID: 21300000, guid: c8b9bc1c33dbcdd469f4850a2ed2497e, type: 3}
+    spriteScale: 0.85
+  - itemName: Cuddly Bear
+    itemType: 1
+    itemSprite: {fileID: 21300000, guid: 3cf30e596eb92e140ae7e26be2fc8949, type: 3}
+    spriteScale: 0.25
+  - itemName: Heart Buckle
+    itemType: 5
+    itemSprite: {fileID: 21300000, guid: 5825c80808c964748b4d8714162ac0e2, type: 3}
+    spriteScale: 1
+  - itemName: Drill gloves
+    itemType: 3
+    itemSprite: {fileID: 21300000, guid: f173b43b8b603504288ed16ff56dbaea, type: 3}
+    spriteScale: 0.3
+  - itemName: Cap
+    itemType: 2
+    itemSprite: {fileID: 21300000, guid: 40d3b0f84f79d9847a032532edb671c8, type: 3}
+    spriteScale: 0.75
+  - itemName: Skull belt
+    itemType: 5
+    itemSprite: {fileID: 21300000, guid: 4245b8f42eac7c64eb11e510accf79ec, type: 3}
+    spriteScale: 0.9
+  - itemName: Happy Antler
+    itemType: 1
+    itemSprite: {fileID: 21300000, guid: bb5a5706fd043964eb8f4ac75b88eed3, type: 3}
+    spriteScale: 0.225
