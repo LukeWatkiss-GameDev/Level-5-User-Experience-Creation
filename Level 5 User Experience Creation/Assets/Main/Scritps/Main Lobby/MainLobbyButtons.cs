@@ -99,7 +99,7 @@ public class MainLobbyButtons : MonoBehaviour
 
     public void SendToSupport()
     {
-        // when the funtion is called send the user to the website bellow
+        // when the funtion is called send the user to the website below
         Application.OpenURL("https://unity.com");
     }
 

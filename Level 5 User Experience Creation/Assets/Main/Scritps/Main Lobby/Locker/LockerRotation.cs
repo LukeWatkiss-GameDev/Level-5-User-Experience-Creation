@@ -5,14 +5,8 @@ public class LockerRotation : MonoBehaviour
 {
     public GameObject player;
     public float rotationSpeed;
-    Vector3 playerStartRotation;
-    // Update is called once per frame
+    public Vector3 playerStartRotation;
 
-    void Start()
-    {
-        playerStartRotation = player.transform.eulerAngles;
- 
-    }
     void Update()
     {
         if(Input.GetMouseButton(0) && EventSystem.current.currentSelectedGameObject.name == "Player - Render texture")
@@ -25,6 +19,7 @@ public class LockerRotation : MonoBehaviour
 
     void OnDisable()
     {
+        // when the locker screen is disabled return the player to their starting rotation
         player.transform.eulerAngles = playerStartRotation;
     }
 

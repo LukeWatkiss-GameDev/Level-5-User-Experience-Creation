@@ -36,12 +36,14 @@ public class RPassButtons : MonoBehaviour
 
     void ShrinkOBJ(GameObject obj)
     {
+        // shrink the obj back to its original scale
         obj.GetComponent<Button>().interactable = true;
         obj.transform.DOScale(1,.5f);
     }
 
     public void ChangeShownItem(int index)
     {
+        // change the item that is shown through the render texture
         if(currentShownItem != null)
         {
             HideItem(currentShownItem);
@@ -63,6 +65,7 @@ public class RPassButtons : MonoBehaviour
 
     public void SwapToRhuPassBuy()
     {
+        // swap to the next rhu pass screen
         rPassBuyScreen.SetActive(true);
         rPassCamera.gameObject.SetActive(true);
     }

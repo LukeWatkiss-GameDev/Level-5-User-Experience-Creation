@@ -13,7 +13,7 @@ public class MapMarker : MonoBehaviour
             // check if the script has detected a clicked object
             GameObject clickedOBJ = EventSystem.current.currentSelectedGameObject;
             // check if clicked object is = null to avoid errors
-            if(clickedOBJ != null &&clickedOBJ.name == "Map")
+            if(clickedOBJ != null && clickedOBJ.name == "Map")
             {
                 // move the map marker to the mouse position
                 mapMarker.transform.position = Input.mousePosition;      
