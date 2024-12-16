@@ -29,7 +29,6 @@ public class ShopScroll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(scrollCounter);
         // scroll down
         // check if the user can scroll using the scroll counter and bool
         if(Input.GetAxisRaw("Mouse ScrollWheel") < 0 && canScroll && scrollCounter != -2)  

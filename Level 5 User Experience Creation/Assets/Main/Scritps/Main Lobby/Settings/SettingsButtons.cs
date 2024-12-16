@@ -50,7 +50,7 @@ public class SettingsButtons : MonoBehaviour
     #endregion
     #region Game Setting variables
 
-    [Header("Game")]
+    [Header("Game Settings")]
     [Header("Toggle Sprint")]
     public GameObject[] TSSliderSections;
     int currentTSSetting = 1; // value set to the max amount of settings
@@ -90,12 +90,108 @@ public class SettingsButtons : MonoBehaviour
     public GameObject[] APWSliderSections;
     int currentAPWSetting = 1; // value set to the max amount of settings
     public TMP_Text APWText;
+
+    [Header("Region")]
+    public string[] regionSettings;
+    public GameObject[] regionSliderSections;
+    int currentRegionSetting = 4; // value set to the max amount of settings
+    public TMP_Text regionText;
+    [Header("Language")]
+    public string[] languageSettings;
+    public GameObject[] languageSliderSections;
+    int currentLanguageSetting = 4; // value set to the max amount of settings
+    public TMP_Text languageText;
     
     #endregion
+    #region Audio Setting variables
 
+    [Header("Audio Settings")]
+    [Header("Main volume")]
+    public Slider mainAudioSlider;
+    public TMP_Text mainAudioPercentText;
+    
+    [Header("Music volume")]
+    public Slider musicAudioSlider;
+    public TMP_Text musicAudioPercentText;
+    
+    [Header("SFX volume")]
+    public Slider SFXSlider;
+    public TMP_Text SFXPercentText;
+
+    [Header("Dialogue volume")]
+    public Slider dialogueAudioSlider;
+    public TMP_Text dialogueAudioPercentText;
+    
+    [Header("Cimematics volume")]
+    public Slider cinematicsSlider;
+    public TMP_Text cinematicsPercentText;
+
+    [Header("Sound Quality")]
+    public string[] soundQualitySettings;
+    public GameObject[] soundQualitySliderSections;
+    int currentSoundQualitySetting = 2; // value set to the max amount of settings
+    public TMP_Text soundQualityText;
+    
+    [Header("Subtitles")]
+    public GameObject[] subtitleSliderSections;
+    int currentSubtitleSetting = 0;
+    public TMP_Text subtitleText;
+    
+    [Header("Voice Chat")]
+    public GameObject[] voiceChatSliderSections;
+    int currentVoiceChatSetting = 1;
+    public TMP_Text voiceChatText;
+    
+    [Header("Visualise SFX")]
+    public GameObject[] visualiseSFXSliderSections;
+    int currentVisualiseSFXSetting = 1;
+    public TMP_Text visualiseSFXText;
+
+    #endregion
+    #region Account Setting Variables
+    
+    [Header("Account Settings")]
+    [Header("Filter Mature Language")]
+    public GameObject[] FMLSliderSections;
+    int currentFMLSetting = 1;
+    public TMP_Text FMLText;
+    
+    [Header("Accept Friend Requests")]
+    public GameObject[] AFRSliderSections;
+    int currentAFRSetting = 1;
+    public TMP_Text AFRText;
+    
+    [Header("Party Joinable")]
+    public GameObject[] partyJoinableSliderSections;
+    int currentPartyJoinableSetting = 1;
+    public TMP_Text partyJoinableText;
+    
+    [Header("Public game stats")]
+    public GameObject[] PGSSliderSections;
+    int currentPGSSetting = 1;
+    public TMP_Text PGSText;
+    
+    [Header("Display Name")]
+    public GameObject[] displayNameSliderSections;
+    int currentDisplayNameSetting = 1;
+    public TMP_Text displayNameText;
+    
+    [Header("Show level in feed")]
+    public GameObject[] showLevelSliderSections;
+    int currentShowLevelSetting = 1;
+    public TMP_Text showLevelText;
+    
+    [Header("Hide player names")]
+    public GameObject[] HPNSliderSections;
+    int currentHPNSetting = 1;
+    public TMP_Text HPNText;
+
+
+    #endregion
     void Update()
     {
-        UpdateGraphicsSliders();
+        UpdateGraphicsSliders(); // update all graphic settings sliders 
+        UpdateAudioSliders(); // update all audio settings sliders
     }
 
     public void SideButtonClicked(GameObject obj)
@@ -115,7 +211,7 @@ public class SettingsButtons : MonoBehaviour
         currentActiveScreen.SetActive(true);
     }
 
-    #region Graphics settings
+    #region Graphics Settings
     void UpdateGraphicsSliders()
     {
         // update the brightness slider percentage
@@ -158,6 +254,7 @@ public class SettingsButtons : MonoBehaviour
     }
     #endregion
     #region Game Settings
+    
 
     public void ChangeToggleSprintMode(bool left)
     {
@@ -222,9 +319,122 @@ public class SettingsButtons : MonoBehaviour
         APWText.SetText(OnAndOffSettings[currentAPWSetting]);
         // add auto weapon pick up Functionality here
     }
+    public void ChangeRegionMode(bool left)
+    {
+        currentRegionSetting = ChangeSettingValue(currentRegionSetting,regionSettings,left);
+        UpdateSections(regionSliderSections,currentRegionSetting);
+        regionText.SetText(regionSettings[currentRegionSetting]);
+        // add region changing Functionality here
+    }
+    public void ChangeLanguageMode(bool left)
+    {
+        currentLanguageSetting = ChangeSettingValue(currentLanguageSetting,languageSettings,left);
+        UpdateSections(languageSliderSections,currentLanguageSetting);
+        languageText.SetText(languageSettings[currentLanguageSetting]);
+        // add language changing Functionality here
+    }
 
     #endregion
+    #region Auido Settings
 
+    void UpdateAudioSliders()
+    {
+        // update the main audio slider percentage
+        mainAudioPercentText.SetText(mainAudioSlider.value + "%");
+        // update the music audio slider percentage
+        musicAudioPercentText.SetText(musicAudioSlider.value + "%");
+        // update the SFX audio slider percentage
+        SFXPercentText.SetText(SFXSlider.value + "%");
+        // update the dialogue audio slider percentage
+        dialogueAudioPercentText.SetText(dialogueAudioSlider.value + "%");
+        // update the main audio slider percentage
+        cinematicsPercentText.SetText(cinematicsSlider.value + "%");
+
+    }
+
+    public void ChangeSoundQualityMode(bool left)
+    {
+        currentSoundQualitySetting = ChangeSettingValue(currentSoundQualitySetting,soundQualitySettings,left);
+        UpdateSections(soundQualitySliderSections,currentSoundQualitySetting);
+        soundQualityText.SetText(soundQualitySettings[currentSoundQualitySetting]);
+        // add changing sound quality Functionality here
+    }
+    public void ChangeSubtitleMode(bool left)
+    {
+        currentSubtitleSetting = ChangeSettingValue(currentSubtitleSetting,OnAndOffSettings,left);
+        UpdateSections(subtitleSliderSections,currentSubtitleSetting);
+        subtitleText.SetText(OnAndOffSettings[currentSubtitleSetting]);
+        // add changing subtitle Functionality here
+    }
+    public void ChangeVoiceChatMode(bool left)
+    {
+        currentVoiceChatSetting = ChangeSettingValue(currentVoiceChatSetting,OnAndOffSettings,left);
+        UpdateSections(voiceChatSliderSections,currentVoiceChatSetting);
+        voiceChatText.SetText(OnAndOffSettings[currentVoiceChatSetting]);
+        // add changing Voice chat Functionality here
+    }
+    public void ChangeViualiseSFXMode(bool left)
+    {
+        currentVisualiseSFXSetting = ChangeSettingValue(currentVisualiseSFXSetting,OnAndOffSettings,left);
+        UpdateSections(visualiseSFXSliderSections,currentVisualiseSFXSetting);
+        visualiseSFXText.SetText(OnAndOffSettings[currentVisualiseSFXSetting]);
+        // add changing visualise sound effects Functionality here
+    }
+
+    #endregion
+    #region Account Settings
+
+    public void ChangeMatureLanguageMode(bool left)
+    {
+        currentFMLSetting = ChangeSettingValue(currentFMLSetting,OnAndOffSettings,left);
+        UpdateSections(FMLSliderSections,currentFMLSetting);
+        FMLText.SetText(OnAndOffSettings[currentFMLSetting]);
+        // add changing Filter mature language Functionality here
+    }
+    public void ChangeAcceptFriendRequestsMode(bool left)
+    {
+        currentAFRSetting = ChangeSettingValue(currentAFRSetting,OnAndOffSettings,left);
+        UpdateSections(AFRSliderSections,currentAFRSetting);
+        AFRText.SetText(OnAndOffSettings[currentAFRSetting]);
+        // add changing Filter mature language Functionality here
+    }
+    public void ChangePartyJoinableMode(bool left)
+    {
+        currentPartyJoinableSetting = ChangeSettingValue(currentPartyJoinableSetting,OnAndOffSettings,left);
+        UpdateSections(partyJoinableSliderSections,currentPartyJoinableSetting);
+        partyJoinableText.SetText(OnAndOffSettings[currentPartyJoinableSetting]);
+        // add changing party joinable Functionality here
+    }
+    public void ChangeGameStatsMode(bool left)
+    {
+        currentPGSSetting = ChangeSettingValue(currentPGSSetting,OnAndOffSettings,left);
+        UpdateSections(PGSSliderSections,currentPGSSetting);
+        PGSText.SetText(OnAndOffSettings[currentPGSSetting]);
+        // add changing party joinable Functionality here
+    }
+    public void ChangeDisplayNameMode(bool left)
+    {
+        currentDisplayNameSetting = ChangeSettingValue(currentDisplayNameSetting,OnAndOffSettings,left);
+        UpdateSections(displayNameSliderSections,currentDisplayNameSetting);
+        displayNameText.SetText(OnAndOffSettings[currentDisplayNameSetting]);
+        // add changing Display name Functionality here
+    }
+    public void ChangeShowLevelInFeedMode(bool left)
+    {
+        currentShowLevelSetting = ChangeSettingValue(currentShowLevelSetting,OnAndOffSettings,left);
+        UpdateSections(showLevelSliderSections,currentShowLevelSetting);
+        showLevelText.SetText(OnAndOffSettings[currentShowLevelSetting]);
+        // add changing show level in feed Functionality here
+    }
+    public void ChangeHidePlayerNamesMode(bool left)
+    {
+        currentHPNSetting = ChangeSettingValue(currentHPNSetting,OnAndOffSettings,left);
+        UpdateSections(HPNSliderSections,currentHPNSetting);
+        HPNText.SetText(OnAndOffSettings[currentHPNSetting]);
+        // add changing Hide other player names Functionality here
+    }
+
+    #endregion
     void UpdateSections(GameObject[] sections, int currentSetting)
     {
         // loop through all sections to find which one matches the current resolution setting and enable it
