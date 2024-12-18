@@ -18,6 +18,7 @@ public class CareerButtons : MonoBehaviour
     {
         ChangeCharacterStats(solos); // set the character stats to solos on game start
     }
+    
     public void ChangeVisableList(GameObject obj)
     {
         // make the current active button interactable again
