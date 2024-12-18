@@ -1,6 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class InGameButtons : MonoBehaviour
 {
@@ -55,6 +56,11 @@ public class InGameButtons : MonoBehaviour
     public void ChangeBool(bool input)
     {
         questIsOpen = input;
+    }
+
+    public void LoadLobbyScene()
+    {
+        SceneManager.LoadScene("Lobby");
     }
 
 }

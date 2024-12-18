@@ -4,6 +4,7 @@ using DG.Tweening;
 using UnityEngine.UI;
 using System.Collections;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class MainLobbyButtons : MonoBehaviour
 {
@@ -254,6 +255,11 @@ public class MainLobbyButtons : MonoBehaviour
         careerScreen.SetActive(false);
         backgroundDarken.SetActive(false);
         selectModeModal.SetActive(false);
+    }
+
+    public void LoadPlayScreen()
+    {
+        SceneManager.LoadScene("In-Game");
     }
 
 
