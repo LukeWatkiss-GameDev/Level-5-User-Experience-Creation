@@ -37,6 +37,10 @@ public class LockerMenu : MonoBehaviour
         // this line fixes the stretching of sprites however also makes some sprites stick out when setting native size
         // especially on the gloves
         // without this some item sprites are stretched
-        //image.SetNativeSize(); 
+        if(image != gloves || image != character)
+        {
+            image.SetNativeSize(); 
+
+        }
     }
 }
