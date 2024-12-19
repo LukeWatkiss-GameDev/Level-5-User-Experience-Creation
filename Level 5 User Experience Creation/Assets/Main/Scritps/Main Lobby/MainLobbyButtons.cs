@@ -176,6 +176,7 @@ public class MainLobbyButtons : MonoBehaviour
         currentUpButton.interactable = false;
         MoveButtonUp(currentUpButton);
 
+    
         // if the panel to change to is the locker activate the locker camera for the render texture
         if(panel.name == "Locker")
         {
