@@ -36,7 +36,7 @@ public class LoadingBarProgress : MonoBehaviour
         Debug.Log("Loading finished");
 
     }
-
+    
     IEnumerator LoadSceneAsync()
     {
         // make the script wait for 1 second before begining to load the scene

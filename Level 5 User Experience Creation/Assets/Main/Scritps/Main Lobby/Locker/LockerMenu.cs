@@ -33,12 +33,16 @@ public class LockerMenu : MonoBehaviour
 
     public void ChangePanelSprite(Image image,Sprite sprite)
     {
+        Debug.Log(image);
         image.sprite = sprite; 
-        // this line fixes the stretching of sprites however also makes some sprites stick out when setting native size
-        // especially on the gloves
-        // without this some item sprites are stretched
-        if(image != gloves || image != character)
+        // check if the image that will be change is not the gloves
+        // this is because if the gloves are set to native size they go outside of the box
+        // and dont need to be set to native as there is not streaching
+        if(image != gloves)
         {
+            Debug.Log("Set native");
+            // this line fixes the stretching of sprites however also makes some sprites stick out when setting native size
+            // without this some item sprites are stretched
             image.SetNativeSize(); 
 
         }

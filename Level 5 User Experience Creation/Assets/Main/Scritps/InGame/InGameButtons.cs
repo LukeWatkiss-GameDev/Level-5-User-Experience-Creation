@@ -63,4 +63,16 @@ public class InGameButtons : MonoBehaviour
         SceneManager.LoadScene("Lobby");
     }
 
+    public void CloseModal(bool BGDarken)
+    {
+        // parent.parent will probably need to change
+        GameObject curPanel = EventSystem.current.currentSelectedGameObject.transform.parent.parent.gameObject;
+        curPanel.GetComponentInChildren<GrowAndShrinkText>().PanelShrink(); // this will need to change 
+        if(BGDarken)
+        {
+            backgroundDarken.SetActive(false);
+        }
+
+    }
+
 }
